@@ -5,7 +5,8 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:allowBackup="true"
         android:label="Power of Two Widget"
-        android:supportsRtl="true"
+        android:supportsRtl="true">
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
