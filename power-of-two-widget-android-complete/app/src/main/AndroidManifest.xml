@@ -2,10 +2,10 @@
     package="com.example.poweroftwowidget">
 
     <application
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:label="Power of Two Widget"
-        android:supportsRtl="true">
+        android:supportsRtl="true">>
 
         <activity
             android:name=".MainActivity"
