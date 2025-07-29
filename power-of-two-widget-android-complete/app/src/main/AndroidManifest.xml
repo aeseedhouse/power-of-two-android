@@ -5,7 +5,11 @@
         android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:label="Power Number"
-        android:supportsRtl="true">>
+        android:supportsRtl="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round">
+
+
 
         <activity
             android:name=".MainActivity"
