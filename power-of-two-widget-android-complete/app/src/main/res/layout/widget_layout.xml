@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="8dp"
-    android:background="@android:color/transparent">
+    android:background="#80FFFFFF"> <!-- White with 50% opacity -->
 
     <TextView
         android:id="@+id/widget_text"
