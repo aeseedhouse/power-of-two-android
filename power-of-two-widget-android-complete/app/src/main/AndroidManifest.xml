@@ -4,7 +4,7 @@
     <application
         android:theme="@style/AppTheme"
         android:allowBackup="true"
-        android:label="Power of Two Widget"
+        android:label="Power Number"
         android:supportsRtl="true">>
 
         <activity
