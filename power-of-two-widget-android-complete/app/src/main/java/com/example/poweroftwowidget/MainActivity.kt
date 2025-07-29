@@ -10,7 +10,6 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -18,20 +17,21 @@ class MainActivity : AppCompatActivity() {
         val inputField = findViewById<EditText>(R.id.inputNumber)
         val saveButton = findViewById<Button>(R.id.saveButton)
 
+        val sharedPrefs = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+        inputField.setText(sharedPrefs.getInt("start_number", 10).toString())
+
         saveButton.setOnClickListener {
-            val sharedPreferences = getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
-            val editor = sharedPreferences.edit()
             val input = inputField.text.toString().toIntOrNull() ?: 10
-            editor.putInt("start_number", input)
-            editor.apply()
+            sharedPrefs.edit().putInt("start_number", input).apply()
 
             // Trigger widget update
-            val intent = Intent(this, PowerOfTwoWidgetProvider::class.java)
-            intent.action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
-            val ids = AppWidgetManager.getInstance(application).getAppWidgetIds(
-                ComponentName(application, PowerOfTwoWidgetProvider::class.java)
-            )
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            val intent = Intent(this, PowerOfTwoWidgetProvider::class.java).apply {
+                action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+                val ids = AppWidgetManager.getInstance(application).getAppWidgetIds(
+                    ComponentName(application, PowerOfTwoWidgetProvider::class.java)
+                )
+                putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids)
+            }
             sendBroadcast(intent)
 
             finish()
