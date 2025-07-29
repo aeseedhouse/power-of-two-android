@@ -16,7 +16,10 @@ class PowerOfTwoWidgetProvider : AppWidgetProvider() {
 
         val today = Calendar.getInstance()
         val daysPassed = ((today.timeInMillis - startDay.timeInMillis) / (1000 * 60 * 60 * 24)).toInt()
-        val n = 10 + daysPassed  // Change 10 to your preferred base number
+        val sharedPreferences = context.getSharedPreferences("widget_prefs", Context.MODE_PRIVATE)
+        val startN = sharedPreferences.getInt("start_number", 0)
+        val n = startN + daysPassed
+
 
         val result = BigInteger.TWO.pow(n).toString()
 
