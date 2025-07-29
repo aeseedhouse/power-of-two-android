@@ -5,7 +5,7 @@
         android:allowBackup="true"
         android:label="Power of Two Widget"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@android:style/Theme.DeviceDefault">
         <receiver android:name=".PowerOfTwoWidgetProvider" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
