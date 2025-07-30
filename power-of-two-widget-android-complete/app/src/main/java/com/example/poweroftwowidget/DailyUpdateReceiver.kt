@@ -6,11 +6,15 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
+import android.widget.Toast
 import java.math.BigInteger
 import java.util.*
 
 class DailyUpdateReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
+        // ✅ Show a message when the alarm fires
+        Toast.makeText(context, "Alarm triggered!", Toast.LENGTH_SHORT).show()
+
         val appWidgetManager = AppWidgetManager.getInstance(context)
         val widgetComponent = ComponentName(context, PowerOfTwoWidgetProvider::class.java)
         val widgetIds = appWidgetManager.getAppWidgetIds(widgetComponent)
