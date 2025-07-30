@@ -49,8 +49,8 @@ class MainActivity : AppCompatActivity() {
             )
         
             val calendar = Calendar.getInstance().apply {
-                set(Calendar.HOUR_OF_DAY, 0)
-                set(Calendar.MINUTE, 5)
+                set(Calendar.HOUR_OF_DAY, 19)
+                set(Calendar.MINUTE, 10)
                 set(Calendar.SECOND, 0)
                 set(Calendar.MILLISECOND, 0)
                 if (before(Calendar.getInstance())) {
