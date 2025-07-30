@@ -2,7 +2,6 @@
     package="com.example.poweroftwowidget">
 
     <application
-        <receiver android:name=".DailyUpdateReceiver" />
         android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:label="Power Number"
@@ -10,7 +9,8 @@
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round">
 
-
+        <!-- Daily Alarm Receiver -->
+        <receiver android:name=".DailyUpdateReceiver" />
 
         <activity
             android:name=".MainActivity"
@@ -29,6 +29,7 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/power_of_two_widget_info" />
         </receiver>
+
     </application>
 
 </manifest>
