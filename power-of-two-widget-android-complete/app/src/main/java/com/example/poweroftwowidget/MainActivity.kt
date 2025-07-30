@@ -41,8 +41,9 @@ class MainActivity : AppCompatActivity() {
             // Schedule daily update with AlarmManager
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent = Intent("com.example.poweroftwowidget.DAILY_UPDATE").apply {
-                    setPackage(context.packageName)
-                }
+            setPackage(packageName)
+        }
+
 
             val pendingIntent = PendingIntent.getBroadcast(
                 this,
