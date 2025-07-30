@@ -11,8 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.util.Log
-import java.util.Calendar
-import java.util.Date
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +26,16 @@ class MainActivity : AppCompatActivity() {
 
         saveButton.setOnClickListener {
             val input = inputField.text.toString().toIntOrNull() ?: 10
+
+            // Save new input value
             sharedPrefs.edit().putInt("start_number", input).apply()
+
+            // Save install time ONLY if it's not already set
             if (!sharedPrefs.contains("install_time")) {
-            sharedPrefs.edit().putLong("install_time", System.currentTimeMillis()).apply()
-        }
+                sharedPrefs.edit().putLong("install_time", System.currentTimeMillis()).apply()
+            }
 
-
-            // Trigger widget update immediately
+            // Update widget immediately
             val updateIntent = Intent(this, PowerOfTwoWidgetProvider::class.java).apply {
                 action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
                 val ids = AppWidgetManager.getInstance(application).getAppWidgetIds(
@@ -43,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
             sendBroadcast(updateIntent)
 
-            // Schedule alarm 1 minute from now
+            // Schedule alarm in 1 minute (for testing)
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             val alarmIntent = Intent("com.example.poweroftwowidget.DAILY_UPDATE").apply {
                 setPackage(packageName)
@@ -56,9 +58,8 @@ class MainActivity : AppCompatActivity() {
                 PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
             )
 
-            val triggerTime = System.currentTimeMillis() + 60_000  // 1 minute from now
-
-            Log.d("MainActivity", "Setting alarm for 1 minute from now: ${Date(triggerTime)}")
+            val triggerTime = System.currentTimeMillis() + 60_000
+            Log.d("MainActivity", "Setting test alarm for: ${Date(triggerTime)}")
 
             alarmManager.setExactAndAllowWhileIdle(
                 AlarmManager.RTC_WAKEUP,
@@ -66,8 +67,7 @@ class MainActivity : AppCompatActivity() {
                 pendingIntent
             )
 
-            // COMMENTED OUT FOR TESTING — Un-comment for daily updates
-            /*
+            // Optional: also schedule daily repeating update
             val calendar = Calendar.getInstance().apply {
                 set(Calendar.HOUR_OF_DAY, 12)
                 set(Calendar.MINUTE, 5)
@@ -77,13 +77,13 @@ class MainActivity : AppCompatActivity() {
                     add(Calendar.DAY_OF_YEAR, 1)
                 }
             }
+
             alarmManager.setInexactRepeating(
                 AlarmManager.RTC_WAKEUP,
                 calendar.timeInMillis,
                 AlarmManager.INTERVAL_DAY,
                 pendingIntent
             )
-            */
 
             finish()
         }
