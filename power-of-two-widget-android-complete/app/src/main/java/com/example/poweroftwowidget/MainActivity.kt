@@ -28,7 +28,10 @@ class MainActivity : AppCompatActivity() {
         saveButton.setOnClickListener {
             val input = inputField.text.toString().toIntOrNull() ?: 10
             sharedPrefs.edit().putInt("start_number", input).apply()
+            if (!sharedPrefs.contains("install_time")) {
             sharedPrefs.edit().putLong("install_time", System.currentTimeMillis()).apply()
+        }
+
 
             // Trigger widget update immediately
             val updateIntent = Intent(this, PowerOfTwoWidgetProvider::class.java).apply {
