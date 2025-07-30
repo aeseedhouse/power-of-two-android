@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
             val input = inputField.text.toString().toIntOrNull() ?: 10
             sharedPrefs.edit().putInt("start_number", input).apply()
 
+            sharedPrefs.edit().putLong("install_time", System.currentTimeMillis()).apply()
+
             // Trigger widget update immediately
             val intent = Intent(this, PowerOfTwoWidgetProvider::class.java).apply {
                 action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
