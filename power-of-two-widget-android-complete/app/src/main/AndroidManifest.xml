@@ -2,6 +2,7 @@
     package="com.example.poweroftwowidget">
 
     <application
+        <receiver android:name=".DailyUpdateReceiver" />
         android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:label="Power Number"
