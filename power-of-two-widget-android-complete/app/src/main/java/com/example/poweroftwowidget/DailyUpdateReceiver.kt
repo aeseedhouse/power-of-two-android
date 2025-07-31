@@ -1,4 +1,4 @@
-package com.aes.powerwidget
+package com.aes.poweroftwowidget
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
