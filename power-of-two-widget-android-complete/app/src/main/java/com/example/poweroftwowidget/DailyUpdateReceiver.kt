@@ -1,3 +1,15 @@
+package com.aes.powerwidget
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.appwidget.AppWidgetManager
+import android.content.ComponentName
+import android.widget.RemoteViews
+import android.widget.Toast
+import java.math.BigInteger
+import java.util.*
+
+
 class DailyUpdateReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent?) {
         val appWidgetManager = AppWidgetManager.getInstance(context)
