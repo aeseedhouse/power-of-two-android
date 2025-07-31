@@ -12,7 +12,7 @@
         <!-- Daily Alarm Receiver -->
         <receiver android:name=".DailyUpdateReceiver" android:exported="true">
             <intent-filter>
-                <action android:name="com.example.poweroftwowidget.DAILY_UPDATE" />
+                <action android:name="com.aes.poweroftwowidget.DAILY_UPDATE" />
             </intent-filter>
         </receiver>
 
